@@ -9,16 +9,24 @@ skip_before_filter :authorize
 
   def show
   	@organization = Organization.find(params[:id])
+    @partner_count = @organization.accepted_deals.count
+    @accepted_deals = @organization.accepted_deals.limit(5).to_a.collect{|f| f.partner }
+    @pending_deals_count = @organization.pending_deals.count()
   end
 
   def new
   	@organization = Organization.new
   	@organization.relationships.build
+  	@inviter_id = params[:id]
+    @inviter_code = params[:code]
   end
 
   def create
     @organization = Organization.new(org_params)
     if @organization.save
+    	create_friendship_with_inviter(@organization, params)
+      # flash[:notice] = :email_signup_thanks.l_with_args(:email => @user.email)
+      # redirect_to signup_completed_user_path(@user)
     	redirect_to organizations_path
     else
     	render 'new'
@@ -47,7 +55,28 @@ skip_before_filter :authorize
     # render nothing: true, status: 204
   end
 
-  private
+  def create_deal_with_inviter(organization, options = {})
+    unless options[:inviter_code].blank? or options[:inviter_id].blank?
+      partner = Organization.find(options[:inviter_id])
+
+      if partner && partner.valid_invite_code?(options[:inviter_code])
+        accepted    = DealStatus[:accepted]
+        @deal = Deal.new(:organization_id => partner.id,
+          :partner_id => organization.id,
+          :deal_status => accepted,
+          :initiator => true)
+
+        reverse_deal = Deal.new(:organization_id => organization.id,
+          :partner_id => partner.id,
+          :deal_status => accepted )
+
+        @deal.save!
+        reverse_deal.save!
+      end
+    end
+  end
+
+ private
 
   def org_params
     params.require(:organization).permit(
@@ -93,7 +122,8 @@ skip_before_filter :authorize
 		:created_by_exec_id, 
 		:certifications, 
 		:source_original, 
-		:is_active, 
+		:is_active,
+    :notify_partner_requests,
 		executive_ids: [],
     )
   end

@@ -29,6 +29,19 @@ Stratevarius3::Application.routes.draw do
   patch 'organizations/:id' => 'organizations#update', as: :update_organization
   delete 'organizations/:id' => 'organizations#destroy', as: :delete_organization
 
+  get '/deals.xml' => 'deals#index', :as => :deals_xml, :format => 'xml'
+  get '/deals' => 'deals#index', :as => :deals
+
+  resources :deals do
+      collection do
+        get :accepted
+        get :pending
+        get :denied
+      end
+  end
+
+    get '/signup/:inviter_id/:inviter_code' => 'executives#new', :as => :signup_by_id
+
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
