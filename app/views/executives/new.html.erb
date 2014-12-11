@@ -1,0 +1,98 @@
+<div class="wrap-form">
+
+<div class="sign-form-body">
+
+  <p>Already have an account? &nbsp;<a href="signin">Sign In</a></p><br><br>
+
+  <h1 class="form-title">Sign Up &nbsp;=> &nbsp;Step 1</h1>
+
+<h1 class="form-title">Choose &nbsp;Username &nbsp;&amp; &nbsp;Password</h1>
+<p align="left"><b>&nbsp;** = Required fields that must be completed to submit.</b><br>
+<i>&nbsp;You can come back at any time to update/add to/edit your profile</i><br>
+<br>
+</b><p>
+<i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**** = Needs a drop-down box (pulling from a state table/model)</i><br>
+<br>
+
+<%= form_for @executive do |f| %>
+
+<fieldset id="executive-meta">
+  
+  <%= f.text_field :username, :placeholder => "Username **" %>    
+  
+  <%= f.password_field :password, :placeholder => "Password **" %>
+
+  <%= f.password_field :password_confirmation, :placeholder => "Retype Your Password **" %>
+
+  <p>&nbsp; </p>
+
+  <hr>
+
+  <br>
+
+<h1 class="form-title">Sign Up &nbsp;=> &nbsp;Step 2</h1>
+
+<h1 class="form-title">Info&nbsp; About&nbsp; You</h1>
+
+  <%= f.text_field :prefix, :placeholder => "Prefix ** (exs: Mr., Ms., Dr., COL)" %>
+
+  <%= f.text_field :firstname, :placeholder => "First Name **" %>
+    
+  <%= f.text_field :lastname, :placeholder => "Last Name **" %>
+  
+  <%#= f.text_field :suffix, :placeholder => "Suffix  (exs: Jr., Sr., III, Esq.)" %>
+
+  <%= f.text_field :email, :placeholder => "Email **" %>
+
+  <%#= f.text_field :strat_exec_constituent_type, :placeholder => "Stratevarius Constituent Type" %>
+
+  <%= f.text_field :mobile_tel, :placeholder => "Mobile Tel **" %>
+
+  <%#= f.text_field :mobile_carrier, :placeholder => "Mobile Carrier" %>
+
+  <%= f.text_field :office_tel, :placeholder => "Office Tel **" %>
+
+  <%= f.text_field :social_twitter, :placeholder => "Twitter Account Link" %>
+
+  <%= f.text_field :social_linkedin, :placeholder => "Linked-In Account Link" %>
+
+  <%= f.text_field :social_blog, :placeholder => "Blog Link" %>
+
+  <%#= f.text_field :exec_comments_on_self, :placeholder => "Comments" %>
+
+  <%= f.hidden_field :is_verified_by_staff, :value => "not yet verified" %>
+
+  <%= f.hidden_field :is_verified_by_thirdparty, :value => "not yet verified" %>
+
+  <%= f.hidden_field :is_user, :value => "yes" %>
+
+<p>&nbsp; </p>
+
+  <hr>
+
+  <br>
+
+</fieldset>
+
+<fieldset id="executive-organization">
+
+<h1 class="form-title">Sign Up &nbsp;&nbsp;=> &nbsp;&nbsp;Step 3</h1>
+
+<h1 class="form-title">Add Your Company/Organization</h1>
+  <%= f.fields_for :relationships do |relationship| %>
+        <%= render 'relationship_fields', f: relationship %> 
+  <% end %>
+
+
+  </fieldset>
+<br><br>
+  <%= f.submit "SUBMIT", :class => "form-submit" %>
+<% end %>
+  <br><br>
+  <br><br>
+  <br><br>
+  <p>Already have an account? <a href="signin">Sign In</a></p>
+  
+</div>
+
+</div>

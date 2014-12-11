@@ -1,0 +1,59 @@
+body {
+  background: url('bg.jpg') no-repeat center center fixed;
+  // background-repeat: no-repeat;
+  // background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: "Dosis", sans-serif;
+  // width: 100%
+}
+
+.wrap-list {
+  position: relative;
+  float: left;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 3%;
+  margin-bottom: 100px;
+
+}
+.view-list {
+  margin-left: 3%;
+  margin-right: 3%;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.87);
+
+  p {
+    font-family: 'Dosis', sans-serif;
+    letter-spacing: 1px;
+    font-size: 18px;
+    text-align: left;
+    padding: 5px 10px 5px 15px;
+  }
+
+  h1 {
+  font-family: 'Exo 2', sans-serif!important;
+  letter-spacing: 2px;
+  font-size: 29px;
+  text-align: left;
+  font-weight: bold;
+  color: #C1262E;
+  padding: 0px 0px 20px 0px;
+  }
+
+  h2 {
+      font-weight: bold;
+      font-size: 26px;
+      font-family: 'Dosis', sans-serif;
+      letter-spacing: 1px;
+      text-align: left;
+      padding: 10px 10px 5px 15px;
+    }
+}
+
+hr { 
+    border-width: 3px;
+}

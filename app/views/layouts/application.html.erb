@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Managebent, powered by Stratevarius</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+
+<nav>
+  <div id="nav-hold">
+    <div id="logo">
+      <a href="home"><img id="mb-logo" src="../../assets/mb-logo-v2c-50per.png" height="50" alt="Managebent Logo"></a>
+    </div>
+    <h1 id="brand"><a href="home">Managebent</a></h1>
+    <ul>
+      <li><%= link_to 'Strategic Advisor Organizations', organizations_path %></li>
+      <li><%= link_to 'Startup Executives', executives_path %></li>
+      <li><%= link_to 'Sign In', signin_path %></li>
+      <li><%= link_to 'Sign Up', signup_path %></li>
+    </ul>
+  </div>
+</nav>
+
+<div id="body-wrap">
+
+  <div id="style-block"></div>
+
+<%= yield %>
+
+</div>
+
+<footer>
+  
+  <p id="footer-text">Made with <span>&#x2764</span> in Los Angeles, California</p>
+
+</footer>
+
+</body>
+</html>

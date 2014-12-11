@@ -1,0 +1,35 @@
+footer {
+  height: 60px;
+  width: 100%;
+  // background-color: #12100A;
+  // background-color: #D3000E;
+  // background-color: #6A210D;
+  // background-color: #363636;
+  // background-color: #561E17;
+  // background-color: #0A0F10;
+  // background-color: #291A10;
+  // background-color: #7F0E1B;
+  // background-color: #1A100B;
+  display: table;
+  background-color: #C1262E;
+  position: fixed;
+  bottom: 0;
+  z-index: 999999;
+  float: left;
+}
+
+#footer-text{
+
+  font-family: "Exo 2";
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #f9f9f9;
+  letter-spacing: 3px;
+  margin-left: 20px;
+  padding-top: 10px;
+
+  span {
+    color:#291A10;
+    font-size: 20px;
+  }
+}
