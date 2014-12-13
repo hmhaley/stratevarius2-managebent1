@@ -7,56 +7,56 @@ class Deal < ActiveRecord::Base
 	belongs_to :partner, :class_name => "Organization", :foreign_key => "partner_id"   
 	has_enumerated :deal_status, :class_name => 'DealStatus', :foreign_key => 'deal_status_id'
 
-	validates_presence_of   :friendship_status
-	validates_presence_of   :user
-	validates_presence_of   :friend
-	validates_uniqueness_of :friend_id, :scope => :user_id
+	validates_presence_of   :deal_status
+	validates_presence_of   :organization
+	validates_presence_of   :partner
+	validates_uniqueness_of :partner_id, :scope => :organization_id
 	validate :cannot_request_if_daily_limit_reached
-	validates_each :user_id do |record, attr, value|
-    record.errors.add attr, 'can not be same as friend' if record.user_id.eql?(record.friend_id)
+	validates_each :organization_id do |record, attr, value|
+    record.errors.add attr, 'can not be same as partner' if record.organization_id.eql?(record.partner_id)
   end
   
   # named scopes
   scope :accepted, lambda {
-    #hack: prevents FriendshipStatus[:accepted] from getting called before the friendship_status records are in the db (only matters in testing ENV)
-    where("friendship_status_id = ?", FriendshipStatus[:accepted].id)
+    #hack: prevents DealStatus[:accepted] from getting called before the deal_status records are in the db (only matters in testing ENV)
+    where("deal_status_id = ?", DealStatus[:accepted].id)
   }
   
   def cannot_request_if_daily_limit_reached  
-    if new_record? && initiator && user.has_reached_daily_friend_request_limit?
-      errors.add(:base, "Sorry, you'll have to wait a little while before requesting any more friendships.") 
+    if new_record? && initiator && organization.has_reached_daily_partner_request_limit?
+      errors.add(:base, "Sorry, you'll have to wait a little while before requesting any more deals.") 
     end
   end  
     
   before_validation(:on => :create){:set_pending}
-  after_save :notify_requester, :if => Proc.new{|fr| fr.accepted? && fr.initiator }
+  after_save :notify_requester, :if => Proc.new{|d| d.accepted? && d.initiator }
   
   def reverse
-    Friendship.where('user_id = ? and friend_id = ?', self.friend_id, self.user_id).first
+    Deal.where('organization_id = ? and partner_id = ?', self.partner_id, self.organization_id).first
   end
 
   def denied?
-    friendship_status.eql?(FriendshipStatus[:denied])
+    deal_status.eql?(DealStatus[:denied])
   end
   
   def pending?
-    friendship_status.eql?(FriendshipStatus[:pending])
+    deal_status.eql?(DealStatus[:pending])
   end
   
   def accepted?
-    friendship_status.eql?(FriendshipStatus[:accepted])    
+    deal_status.eql?(DealStatus[:accepted])    
   end
   
-  def self.friends?(user, friend)
-    where("user_id = ? AND friend_id = ? AND friendship_status_id = ?", user.id, friend.id, FriendshipStatus[:accepted].id).first
+  def self.partners?(organization, partner)
+    where("organization_id = ? AND partner_id = ? AND deal_status_id = ?", organization.id, partner.id, DealStatus[:accepted].id).first
   end
   
-  def notify_requester
-    UserNotifier.friendship_accepted(self).deliver
-  end
+  # def notify_requester
+  #   OrganizationNotifier.deal_accepted(self).deliver
+  # end
     
-  private
+private
   def set_pending
-    friendship_status_id = FriendshipStatus[:pending].id
+    deal_status_id = DealStatus[:pending].id
   end  
 end

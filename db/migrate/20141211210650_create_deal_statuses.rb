@@ -2,7 +2,7 @@ class CreateDealStatuses < ActiveRecord::Migration
 
 	def change
 	    create_table :deal_statuses do |t|
-      		t.column :name, :string
+      		t.string :name
   		end
   	end
 end

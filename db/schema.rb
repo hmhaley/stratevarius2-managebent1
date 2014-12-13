@@ -11,10 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205221543) do
+ActiveRecord::Schema.define(version: 20141211211610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "deal_statuses", force: true do |t|
+    t.string "name"
+  end
+
+  create_table "deals", force: true do |t|
+    t.integer  "deal_status_id"
+    t.integer  "partner_id"
+    t.integer  "organization_id"
+    t.boolean  "initiator",                 default: false
+    t.string   "deal_type"
+    t.string   "deal_description"
+    t.string   "is_deal_current"
+    t.integer  "start_date_month"
+    t.integer  "start_date_year"
+    t.integer  "end_date_month"
+    t.integer  "end_date_year"
+    t.string   "is_verified_by_org"
+    t.string   "is_verified_by_staff"
+    t.string   "is_verified_by_thirdparty"
+    t.integer  "created_by_exec_id"
+    t.string   "staff_comments_on_deal"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+  end
 
   create_table "executives", force: true do |t|
     t.string   "username"

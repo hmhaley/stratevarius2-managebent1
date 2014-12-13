@@ -28,7 +28,7 @@ extend ::Geocoder::Model::ActiveRecord
 
 # Other definitions
 
-tracks_unlinked_activities [:invited_partners]
+# tracks_unlinked_activities [:invited_partners]
 	
 def can_request_deal_with(organization)
     !self.eql?(organization) && !self.deal_exists_with?(organization)

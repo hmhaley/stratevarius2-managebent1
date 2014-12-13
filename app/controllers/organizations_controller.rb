@@ -24,7 +24,7 @@ skip_before_filter :authorize
   def create
     @organization = Organization.new(org_params)
     if @organization.save
-    	create_friendship_with_inviter(@organization, params)
+    	create_deal_with_inviter(@organization, params)
       # flash[:notice] = :email_signup_thanks.l_with_args(:email => @user.email)
       # redirect_to signup_completed_user_path(@user)
     	redirect_to organizations_path
