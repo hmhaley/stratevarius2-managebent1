@@ -1,2 +1,33 @@
-<br><br><h1> Home Page, coming soon </h1><br>
-<%= link_to 'View all Executives', executives_path %> | <%= link_to 'View all Organizations', organizations_path %>
+<!-- <br><br><h1> Home Page, coming soon </h1><br> -->
+<!-- <%#= link_to 'View all Executives', executives_path %> | <%#= link_to 'View all Organizations', organizations_path %> -->
+
+<div class="wrap-list">
+	<div class="view-list">
+
+	<h1> Strategic Advisor Organizations </h1>
+	<hr>
+
+	<% @organizations.each do |organization| %>
+	<table>
+		<tr>
+			<th><h2><%= organization.org_name %></h2></th>
+		</tr>
+		<tr>
+			<th><p>Org specialty: <%= organization.org_types_id %></p></th>
+		</tr>
+		<tr>
+			<th><p><%= organization.hq_address_street %>, <%= organization.hq_address_city %>, <%= organization.hq_address_state %>, <%= organization.hq_address_zip %></p></th>
+		</tr>
+		<tr>
+			<th><p>web: <%= organization.web_url %> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; office tel: <%= organization.hq_telephone %></p></th>
+		</tr>
+	</table>
+		<br>
+	<!-- 	<p><%#= link_to 'Details', executive %> | 
+			<%#= link_to 'Edit', edit_executive_path(executive) %> | 
+			<%#= link_to 'Delete', executive, method: :delete, data: { confirm: 'Are you sure?' } %></p> -->
+		<hr>
+	<% end %>
+
+</div>
+</div>
