@@ -2,32 +2,38 @@
 <!-- <%#= link_to 'View all Executives', executives_path %> | <%#= link_to 'View all Organizations', organizations_path %> -->
 
 <div class="wrap-list">
-	<div class="view-list">
 
-	<h1> Strategic Advisor Organizations </h1>
-	<hr>
+<div class="home-tagline">Pushing Data until it's Bent, but Not Broken</div>
 
-	<% @organizations.each do |organization| %>
-	<table>
-		<tr>
-			<th><h2><%= organization.org_name %></h2></th>
-		</tr>
-		<tr>
-			<th><p>Org specialty: <%= organization.org_types_id %></p></th>
-		</tr>
-		<tr>
-			<th><p><%= organization.hq_address_street %>, <%= organization.hq_address_city %>, <%= organization.hq_address_state %>, <%= organization.hq_address_zip %></p></th>
-		</tr>
-		<tr>
-			<th><p>web: <%= organization.web_url %> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; office tel: <%= organization.hq_telephone %></p></th>
-		</tr>
-	</table>
-		<br>
-	<!-- 	<p><%#= link_to 'Details', executive %> | 
-			<%#= link_to 'Edit', edit_executive_path(executive) %> | 
-			<%#= link_to 'Delete', executive, method: :delete, data: { confirm: 'Are you sure?' } %></p> -->
-		<hr>
-	<% end %>
-
+	<div class="home-body">
+		<table>
+			<tr class="table-row-1">
+				<th class="table-column-1"><h2>Client<br>Actions</h2></th>
+				<th class="table-column-1"><h2>Featured<br>LA Consultant</h2></th>
+				<th class="table-column-1"><h2>Featured<br>LA Startup</h2></th>
+			</tr>
+			<tr class="table-row-normal">
+				<td class="table-column-1"><p>Client Name 1</p></td>
+				<td><p>Consultant Name 1</p>
+					<br> <br>
+				</td>
+				<td><p>Startup Name 1</p></td>
+			</tr>
+			<tr class="table-row-normal">
+				<td class="table-column-1"><p>Client Name 2</p></td>
+				<td><p>Consultant Name 2</p>
+					<br> <br>
+				</td>
+				<td><p>Startup Name 2</p></td>
+			</tr>
+			<tr class="table-row-normal">
+				<td class="table-column-1"><p>Client Name 3</p></td>
+				<td><p>Consultant Name 3</p>
+					<br> <br>
+				</td>
+				<td><p>Startup Name 3</p></td>
+			</tr>
+		</table>
+	</div>
 </div>
 </div>

@@ -16,10 +16,78 @@ body {
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
-  margin-top: 3%;
+  margin-top: 30px;
   margin-bottom: 100px;
-
 }
+
+.home-tagline {
+    font-family: 'Exo 2', sans-serif!important;
+    background-color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 2px;
+    font-size: 33px;
+    text-align: center;
+    font-weight: bold;
+    color: #C1262E;
+    padding: 20px 10px 20px 10px;
+    font-style: italic;
+  }
+
+.home-body {
+  margin-top: 75px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px 10px 20px 10px;
+
+  h1 {
+    font-family: 'Exo 2', sans-serif!important;
+    background-color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 2px;
+    font-size: 29px;
+    text-align: center;
+    font-weight: bold;
+    color: #C1262E;
+    padding: 20px 10px 20px 10px;
+  }
+
+  table {
+    // table-layout: fixed;
+    width: 100%;
+    min-height: 300px;
+}
+
+  .table-row-1 {
+    background-color: rgba(255, 255, 255, 0.9);
+    height: 55px;
+    text-align: center!important;
+  }
+
+  .table-row-normal {
+    border-spacing: 20px 10px 10px 10px;
+  }
+
+  th {
+    width: 33%;
+    border-bottom: 3px solid black;
+    // text-align: center!important;
+  }
+
+  p {
+    font-family: 'Dosis', sans-serif;
+    letter-spacing: 1px;
+    font-size: 18px;
+    text-align: left;
+    padding: 20px 10px 5px 15px;
+  }
+
+  h2 {
+      font-weight: bold;
+      font-size: 33px;
+      font-family: 'Dosis', sans-serif;
+      letter-spacing: 1px;
+      text-align: left;
+      padding: 10px 10px 5px 15px;
+    }
+}
+
 .view-list {
   margin-left: 3%;
   margin-right: 3%;
@@ -57,3 +125,8 @@ body {
 hr { 
     border-width: 3px;
 }
+
+// CSS TAGS THAT ARE  IN THE CODE IN PLACES, BUT NOT YET USED
+
+// CLASS CODES
+// .table-column-1
