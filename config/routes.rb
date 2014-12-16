@@ -1,18 +1,27 @@
 Stratevarius3::Application.routes.draw do
 
-  # Route of my home page
+# Route of my home page, the index.html.erb page of my app/views/home folder
   root 'home#index'
 
-  get 'signup', to: 'executives#new', as: :signup
-  get 'signin', to: 'sessions#new', as: :signin
-  get 'signout', to: 'sessions#destroy', as: :signout
-
-  resources :relationships
-
-  resources :sessions
-
+# lets us use /home as a shortcut to always be able to easily get back to my home page, called as "home_path"
   get 'home/' => 'home#index', as: :home
 
+# lets us use /signup as a shortcut to always be able to easily get back a page where a new user can sign up for the site
+  get 'signup', to: 'executives#new', as: :signup
+
+# lets us use /signin as a shortcut to always be able to easily get back a page where an EXISTING user can login to the site upon return.  Points to sessions => new because they have to be authorized using their credentials before they can proceed to act on the site as a current_user.  
+  get 'signin', to: 'sessions#new', as: :signin
+
+# lets us use /signout as a shortcut to always be able to easily logout of the site and end the current user session.  should elegantly put them back to ???? location after they logout?
+  get 'signout', to: 'sessions#destroy', as: :signout
+
+# sets up the entire suite of standard restful routes for the resources controller to then process when the user goes to /relationships/x
+  resources :relationships
+
+# sets up the entire suite of standard restful routes for the resources controller to then process when the user goes to /sessions/some_defined_action_here
+  resources :sessions
+
+# manually writte-out collection of full standard restful routes for the executives_controller to then process when the user goes to /executives/some_defined_action_here
   get 'executives/' => 'executives#index', as: :executives
   get 'executives/new' => 'executives#new', as: :new_executive
   get 'executives/:id' => 'executives#show', as: :executive
@@ -21,6 +30,7 @@ Stratevarius3::Application.routes.draw do
   patch 'executives/:id' => 'executives#update', as: :update_executive
   delete 'executives/:id' => 'executives#destroy', as: :delete_executive
 
+# manually writte-out collection of full standard restful routes for the executives_controller to then process when the user goes to /organizations/some_defined_action_here
   get 'organizations/' => 'organizations#index', as: :organizations
   get 'organizations/new' => 'organizations#new', as: :new_organization
   get 'organizations/:id' => 'organizations#show', as: :organization
@@ -29,6 +39,7 @@ Stratevarius3::Application.routes.draw do
   patch 'organizations/:id' => 'organizations#update', as: :update_organization
   delete 'organizations/:id' => 'organizations#destroy', as: :delete_organization
 
+# if you see a "do", it needs an "end"  :-)
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
