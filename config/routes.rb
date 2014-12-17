@@ -39,6 +39,7 @@ Stratevarius3::Application.routes.draw do
   patch 'organizations/:id' => 'organizations#update', as: :update_organization
   delete 'organizations/:id' => 'organizations#destroy', as: :delete_organization
 
+<<<<<<< HEAD
   get '/deals.xml' => 'deals#index', :as => :deals_xml, :format => 'xml'
   get '/deals' => 'deals#index', :as => :deals
 
@@ -52,6 +53,8 @@ Stratevarius3::Application.routes.draw do
 
     get '/signup/:inviter_id/:inviter_code' => 'executives#new', :as => :signup_by_id
 
+=======
+>>>>>>> master
 # if you see a "do", it needs an "end"  :-)
 end
 
