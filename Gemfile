@@ -12,6 +12,8 @@ gem 'httparty'
 
 gem 'geocoder'
 
+gem 'power_enum'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 

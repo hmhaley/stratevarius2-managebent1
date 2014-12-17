@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
 	def authorize
 		redirect_to login_path, alert: "You are Not Authorized to view this page.  Please Sign-Up or Login." if current_user.nil?
 	end
+
+	def add_partner_link(organization = nil)
+				html = ""
+    	html << render(:partial => 'shared/add_partner_link', :locals => {:organization => organization})
+			html.html_safe
+  end
 end
