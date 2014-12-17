@@ -21,4 +21,6 @@ include ActiveModel::SecurePassword
            
 	accepts_nested_attributes_for :organizations
 
+	has_many :associations
+
 end
