@@ -18,8 +18,11 @@ Stratevarius3::Application.routes.draw do
 # sets up the entire suite of standard restful routes for the resources controller to then process when the user goes to /relationships/x
   resources :relationships
 
-# sets up the entire suite of standard restful routes for the resources controller to then process when the user goes to /sessions/some_defined_action_here
+# sets up the entire suite of standard restful routes for the sessions controller to then process when the user goes to /sessions/some_defined_action_here
   resources :sessions
+
+# sets up the entire suite of standard restful routes for the associations controller to then process when the user goes to /sessions/some_defined_action_here
+  resources :associations
 
 # manually writte-out collection of full standard restful routes for the executives_controller to then process when the user goes to /executives/some_defined_action_here
   get 'executives/' => 'executives#index', as: :executives
@@ -39,9 +42,9 @@ Stratevarius3::Application.routes.draw do
   patch 'organizations/:id' => 'organizations#update', as: :update_organization
   delete 'organizations/:id' => 'organizations#destroy', as: :delete_organization
 
-<<<<<<< HEAD
   get '/deals.xml' => 'deals#index', :as => :deals_xml, :format => 'xml'
   get '/deals' => 'deals#index', :as => :deals
+
 
   resources :deals do
       collection do
@@ -53,8 +56,6 @@ Stratevarius3::Application.routes.draw do
 
     get '/signup/:inviter_id/:inviter_code' => 'executives#new', :as => :signup_by_id
 
-=======
->>>>>>> master
 # if you see a "do", it needs an "end"  :-)
 end
 

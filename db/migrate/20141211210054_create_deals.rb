@@ -7,7 +7,7 @@ class CreateDeals < ActiveRecord::Migration
 	      t.integer :organization_id
 	      t.boolean :initiator, default: false
 	      t.string :deal_type
-	      t.string :deal_description
+	      t.text :deal_description
 	      t.string :is_deal_current
 	      t.integer :start_date_month
 	      t.integer :start_date_year
@@ -17,7 +17,7 @@ class CreateDeals < ActiveRecord::Migration
 	      t.string :is_verified_by_staff
 	      t.string :is_verified_by_thirdparty
 	      t.integer :created_by_exec_id
-	      t.string :staff_comments_on_deal
+	      t.text :staff_comments_on_deal
 
 	      t.timestamps null: false
 

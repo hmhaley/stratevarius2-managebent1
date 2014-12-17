@@ -18,12 +18,14 @@ ActiveRecord::Schema.define(version: 20141217061109) do
 
   create_table "associations", force: true do |t|
     t.string   "assoc_type"
-    t.string   "assoc_description"
+    t.text     "assoc_description"
     t.string   "is_deal_current"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "initiator_id_id"
-    t.integer  "receiver_id_id"
+    t.integer  "initiator_id"
+    t.integer  "receiver_id"
+    t.text     "initiator_comments_on_assoc"
+    t.text     "receiver_comments_on_assoc"
     t.integer  "created_by_exec_id"
     t.integer  "confirmation_status_id"
     t.integer  "start_date_month"
@@ -32,11 +34,11 @@ ActiveRecord::Schema.define(version: 20141217061109) do
     t.integer  "end_date_year"
     t.string   "is_verified_by_staff"
     t.string   "is_verified_by_thirdparty"
-    t.text     "staff_comments_on_deal"
+    t.text     "staff_comments_on_assoc"
   end
 
-  add_index "associations", ["initiator_id_id"], name: "index_associations_on_initiator_id_id", using: :btree
-  add_index "associations", ["receiver_id_id"], name: "index_associations_on_receiver_id_id", using: :btree
+  add_index "associations", ["initiator_id"], name: "index_associations_on_initiator_id", using: :btree
+  add_index "associations", ["receiver_id"], name: "index_associations_on_receiver_id", using: :btree
 
   create_table "confirmation_statuses", force: true do |t|
     t.string "name"
@@ -52,7 +54,7 @@ ActiveRecord::Schema.define(version: 20141217061109) do
     t.integer  "organization_id"
     t.boolean  "initiator",                 default: false
     t.string   "deal_type"
-    t.string   "deal_description"
+    t.text     "deal_description"
     t.string   "is_deal_current"
     t.integer  "start_date_month"
     t.integer  "start_date_year"
@@ -62,7 +64,7 @@ ActiveRecord::Schema.define(version: 20141217061109) do
     t.string   "is_verified_by_staff"
     t.string   "is_verified_by_thirdparty"
     t.integer  "created_by_exec_id"
-    t.string   "staff_comments_on_deal"
+    t.text     "staff_comments_on_deal"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
   end
@@ -83,7 +85,7 @@ ActiveRecord::Schema.define(version: 20141217061109) do
     t.string   "home_tel"
     t.string   "fax"
     t.string   "exec_web_url"
-    t.string   "exec_description"
+    t.text     "exec_description"
     t.string   "address_street"
     t.string   "address_city"
     t.string   "address_state"
@@ -104,13 +106,13 @@ ActiveRecord::Schema.define(version: 20141217061109) do
     t.string   "social_photo"
     t.string   "social_blog"
     t.string   "social_platform_dominant"
-    t.string   "certifications"
+    t.text     "certifications"
     t.string   "picture_file_name"
     t.string   "picture_file_type"
     t.string   "is_verified_by_staff"
     t.string   "is_verified_by_thirdparty"
-    t.string   "exec_comments_on_self"
-    t.string   "staff_comments_on_exec"
+    t.text     "exec_comments_on_self"
+    t.text     "staff_comments_on_exec"
     t.integer  "created_by_exec_id"
     t.string   "is_active"
     t.string   "is_admin"
@@ -127,7 +129,7 @@ ActiveRecord::Schema.define(version: 20141217061109) do
     t.string   "org_types_id"
     t.string   "sector_type"
     t.string   "strat_org_constituent_type"
-    t.string   "description"
+    t.text     "description"
     t.string   "web_url"
     t.string   "parent_or_child_org"
     t.integer  "parent_org_id"
@@ -154,15 +156,15 @@ ActiveRecord::Schema.define(version: 20141217061109) do
     t.string   "social_googleplus"
     t.string   "social_youtube"
     t.string   "social_platform_dominant"
-    t.string   "org_special_designations"
+    t.text     "org_special_designations"
     t.string   "logo_file_name"
     t.string   "logo_file_type"
     t.string   "is_verified_by_staff"
     t.string   "is_verified_by_thirdparty"
-    t.string   "exec_comments_on_org"
-    t.string   "staff_comments_on_org"
+    t.text     "exec_comments_on_org"
+    t.text     "staff_comments_on_org"
     t.integer  "created_by_exec_id"
-    t.string   "certifications"
+    t.text     "certifications"
     t.string   "source_original"
     t.string   "is_active"
   end
@@ -182,8 +184,8 @@ ActiveRecord::Schema.define(version: 20141217061109) do
     t.string   "is_verified_by_staff"
     t.string   "is_verified_by_thirdparty"
     t.integer  "created_by_exec_id"
-    t.string   "exec_comments_on_relationship"
-    t.string   "staff_comments_on_relationship"
+    t.text     "exec_comments_on_relationship"
+    t.text     "staff_comments_on_relationship"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end

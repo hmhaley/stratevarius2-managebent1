@@ -16,7 +16,7 @@ class CreateExecutives < ActiveRecord::Migration
 		t.string :home_tel
 		t.string :fax
 		t.string :exec_web_url
-		t.string :exec_description
+		t.text :exec_description
 		t.string :address_street
 		t.string :address_city
 		t.string :address_state
@@ -37,13 +37,13 @@ class CreateExecutives < ActiveRecord::Migration
 		t.string :social_photo
 		t.string :social_blog
 		t.string :social_platform_dominant
-		t.string :certifications
+		t.text :certifications
 		t.string :picture_file_name
 		t.string :picture_file_type
 		t.string :is_verified_by_staff
 		t.string :is_verified_by_thirdparty
-		t.string :exec_comments_on_self
-		t.string :staff_comments_on_exec
+		t.text :exec_comments_on_self
+		t.text :staff_comments_on_exec
 		t.integer :created_by_exec_id
 		t.string :is_active
 		t.string :is_admin

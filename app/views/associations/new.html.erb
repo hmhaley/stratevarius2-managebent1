@@ -1,0 +1,11 @@
+Count: <%= Association.count %>
+<br />
+<br />
+
+<%= form_for @association do |f| %>
+	<%= f.collection_select :initiator_id, Organization.all, :id, :org_name %>
+	<%= f.collection_select :receiver_id, Organization.all, :id, :org_name %>
+<%= f.text_field :assoc_type, :placeholder => "Type of Association" %>
+<%= f.text_area :initiator_comments_on_assoc, :placeholder => "Initiator's Comments on this association" %>
+	<%= f.submit %>
+<% end %>

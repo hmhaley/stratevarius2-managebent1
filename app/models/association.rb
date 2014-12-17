@@ -10,4 +10,10 @@ class Association < ActiveRecord::Base
 
 	has_enumerated :confirmation_status, :class_name => 'ConfirmationStatus', :foreign_key => 'confirmation_status_id'
 
+# def self.get_my_org_associations(assoc_type)
+# 		Organization.find_by_sql(["select initiator_id, org_name, 'associations_initiated_by' from (SELECT organization.id, organization.org_name, a.code as acode, a.name as aname FROM airports AS d INNER JOIN flights AS f ON d.id = f.departure_airport_id INNER JOIN airports AS a ON f.arrival_airport_id = a.id WHERE a.code = ? or d.code = ?) AS flights where dcode != ?
+# 	    union
+# 			select acode, aname, 'departure' from (SELECT d.code as dcode, d.name as dname, a.code as acode, a.name as aname FROM airports AS d INNER JOIN flights AS f ON d.id = f.departure_airport_id INNER JOIN airports AS a ON f.arrival_airport_id = a.id WHERE a.code = ? or d.code = ?) AS flights2 where acode != ?;", code, code, code, code, code, code])
+# 	end
+
 end

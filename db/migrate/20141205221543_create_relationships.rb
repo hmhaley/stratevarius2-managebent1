@@ -16,8 +16,8 @@ class CreateRelationships < ActiveRecord::Migration
 			t.string :is_verified_by_staff
 			t.string :is_verified_by_thirdparty
 			t.integer :created_by_exec_id
-			t.string :exec_comments_on_relationship
-			t.string :staff_comments_on_relationship
+			t.text :exec_comments_on_relationship
+			t.text :staff_comments_on_relationship
 
 			t.timestamps null: false
     	end

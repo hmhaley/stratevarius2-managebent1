@@ -23,6 +23,22 @@ extend ::Geocoder::Model::ActiveRecord
 	has_many :receivers, class_name: "Association",
 	  foreign_key: :receiver_id, inverse_of: :receiver
 
+# GeoCoder at work 
+	geocoded_by :full_address
+  	after_validation :geocode
+
+  	def full_address
+    	return "#{hq_address_street}, #{hq_address_city}, #{hq_address_state}, #{hq_address_zip}"
+  	end
+
+	def geo_center
+	    @organizations = Organization.all 
+	    	@organizations.each do |d|
+	      		coords.push(d.full_address.coordinates)
+	      		Geocoder::Calculations.geographic_center(coords)
+	    	end
+	end
+
 #Deal associations, joined by table "deals",  new words or variables I don't know if are yet defined: accepted_deals, deal_status, deal_status_id, pending_deals, initiator, deals_initiated_by_me, deals_not_initiated_by_me, occurances_as_partner (same as occurances_as_friend) 
 
     has_many :deals, :class_name => "Deal", :foreign_key => "organization_id"
@@ -64,20 +80,5 @@ def partners_ids
     accepted_deals.map{|fr| fr.partner_id }
 end
 
-# GeoCoder at work 
-	geocoded_by :full_address
-  	after_validation :geocode
-
-  	def full_address
-    	return "#{hq_address_street}, #{hq_address_city}, #{hq_address_state}, #{hq_address_zip}"
-  	end
-
-	def geo_center
-	    @organizations = Organization.all 
-	    	@organizations.each do |d|
-	      		coords.push(d.full_address.coordinates)
-	      		Geocoder::Calculations.geographic_center(coords)
-	    	end
-	end
 
 end
