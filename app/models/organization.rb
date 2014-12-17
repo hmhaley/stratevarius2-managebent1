@@ -12,10 +12,16 @@ extend ::Geocoder::Model::ActiveRecord
 	# validates_format_of :hq_email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 	# validates_length_of :hq_email, maximum: 255
 
-#Executive associations, joined by table "relationships"
+#Executive Relationships with Organizations, joined by table "relationships"
 	has_many :relationships
 	has_many :executives, through: :relationships
 	accepts_nested_attributes_for :relationships, allow_destroy: true
+
+#Sets up self-referential/loop many-to-many relationships/joins between two Organizations (both of whom are in the same model/table), through a join table called "Associations"; orgs could have an association because one wants to "follow" another or one wants to log a deal with another, or one wants to log another as a client or vendor, etc.  Need to put al of those choices of what type of association they have in another table
+	has_many :initiators, class_name: "Association",
+	  foreign_key: :initiator_id, inverse_of: :initiator
+	has_many :receivers, class_name: "Association",
+	  foreign_key: :receiver_id, inverse_of: :receiver
 
 #Deal associations, joined by table "deals",  new words or variables I don't know if are yet defined: accepted_deals, deal_status, deal_status_id, pending_deals, initiator, deals_initiated_by_me, deals_not_initiated_by_me, occurances_as_partner (same as occurances_as_friend) 
 

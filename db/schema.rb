@@ -11,10 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211211610) do
+ActiveRecord::Schema.define(version: 20141217061109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "associations", force: true do |t|
+    t.string   "assoc_type"
+    t.string   "assoc_description"
+    t.string   "is_deal_current"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "initiator_id_id"
+    t.integer  "receiver_id_id"
+    t.integer  "created_by_exec_id"
+    t.integer  "confirmation_status_id"
+    t.integer  "start_date_month"
+    t.integer  "start_date_year"
+    t.integer  "end_date_month"
+    t.integer  "end_date_year"
+    t.string   "is_verified_by_staff"
+    t.string   "is_verified_by_thirdparty"
+    t.text     "staff_comments_on_deal"
+  end
+
+  add_index "associations", ["initiator_id_id"], name: "index_associations_on_initiator_id_id", using: :btree
+  add_index "associations", ["receiver_id_id"], name: "index_associations_on_receiver_id_id", using: :btree
+
+  create_table "confirmation_statuses", force: true do |t|
+    t.string "name"
+  end
 
   create_table "deal_statuses", force: true do |t|
     t.string "name"
