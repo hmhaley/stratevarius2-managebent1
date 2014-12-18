@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20141217061109) do
   create_table "associations", force: true do |t|
     t.string   "assoc_type"
     t.text     "assoc_description"
-    t.string   "is_deal_current"
+    t.string   "is_assoc_current"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "initiator_id"

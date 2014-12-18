@@ -1,11 +1,82 @@
-Count: <%= Association.count %>
-<br />
-<br />
+<div class="wrap-form">
+
+<div class="sign-form-body">
+
+  <br><br>
+
+  <h1 class="form-title">Step 1 &nbsp;=> &nbsp;Add an Association Between</h1>
+
+<h1 class="form-title">Your Organization &amp; Another Organization</h1>
+<p align="left"><b>&nbsp;** = Required fields that must be completed to submit.</b><br>
+<i>&nbsp;You can come back at any time to update/add to/edit these on your personal profile</i><br>
+<br>
+</b><p>
+<i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**** = Needs a drop-down box (pulling from a state table/model)</i><br>
+<br>
 
 <%= form_for @association do |f| %>
-	<%= f.collection_select :initiator_id, Organization.all, :id, :org_name %>
-	<%= f.collection_select :receiver_id, Organization.all, :id, :org_name %>
-<%= f.text_field :assoc_type, :placeholder => "Type of Association" %>
-<%= f.text_area :initiator_comments_on_assoc, :placeholder => "Initiator's Comments on this association" %>
-	<%= f.submit %>
+
+<fieldset id="associations-meta">
+
+	<%= f.collection_select :initiator_id, Organization.all, :id, :org_name, {prompt: "INITIATOR ORG (You): Select Your Company/Org"}, {class: "form-collection-select"} %>
+	<br>
+	<%= f.collection_select :receiver_id, Organization.all, :id, :org_name, {prompt: "RECEIVER ORG (Org You Are Targeting): Select the Company/Org"}, {class: "form-collection-select"} %>
+	<br>
+	<%= f.text_field :assoc_type, :placeholder => "TYPE OF ASSOCIATION You Want to Add" %>
+	<br>
+	<%= f.text_area :assoc_description, :class => "form-text-area", :placeholder => "PUBLIC DESCRIPTION, Details, or Comments about the nature of the Association" %>
+	<br>
+	<%= f.text_area :initiator_comments_on_assoc, :class => "form-text-area", :placeholder => "PRIVATE COMMENTS - Your Personal Thoughts, Observations, Notes about the Association (Only You Can See)"  %>
+
+  <p>&nbsp; </p>
+
+  <hr>
+
+  <br>
+
+<h1 class="form-title">Step 2 &nbsp;=> &nbsp;What's the Present State of</h1>
+
+<h1 class="form-title">Your Association with this Org</h1><br>
+
+	<label class="form-radio-button-wrap"><%= f.radio_button(:is_assoc_current, "future", :checked => "checked") %></label>
+	<%= f.label :is_assoc_current, "FUTURE: We Don't Yet Have An Asssociation w/ this Org", :class => "form-radio-button-label" %>
+	<label class="form-radio-button-wrap"><%= f.radio_button(:is_assoc_current, "current") %></label>
+	<%= f.label :is_assoc_current, "CURRENT: We Currently Have an Active Association w/ this Org", :class => "form-radio-button-label" %>
+	<label class="form-radio-button-wrap"><%= f.radio_button(:is_assoc_current, "past, should persist") %></label>
+	<%= f.label :is_assoc_current, "PAST, BUT SHOULD PERSIST - Our association with this Org is over, but should remain on our Profile", :class => "form-radio-button-label" %>
+	<label class="form-radio-button-wrap"><%= f.radio_button(:is_assoc_current, "past, should remove") %></label>
+	<%= f.label :is_assoc_current, "PAST, AND SHOULD REMOVE - Our association with this Org is over, and it should be removed from our Profile", :class => "form-radio-button-label" %>
+
+  <p>&nbsp; </p>
+
+  <hr>
+
+  <br>
+
+<h1 class="form-title">Add an Association &nbsp;=> &nbsp;Step 3</h1>
+
+<h1 class="form-title">Length&nbsp; of the&nbsp; Association</h1>
+<br>
+	<%= f.text_field :start_date_month, :placeholder => "START MONTH: Month the Association Began (today's month as a number (ex: 12)" %>
+	<br>
+	<%= f.text_field :start_date_year, :placeholder => "START YEAR: Year the Association Began (today's year as a number (ex: 2014)" %>
+	<br>
+	<%= f.text_field :end_date_month, :placeholder => "END MONTH: Month the Association Ended (month as a number - leave blank if current)" %>
+	<br>
+	<%= f.text_field :start_date_year, :placeholder => "END YEAR: Month the Association Ended (month as a number - leave blank if current)" %>
+	<br>
+	<%= f.hidden_field :is_verified_by_staff, :value => "not yet verified" %>
+	<br>
+	<%= f.hidden_field :is_verified_by_thirdparty, :value => "not yet verified" %>
+<p>&nbsp; </p>
+<p>&nbsp; </p>
+
+	<%= f.submit "SUBMIT", :class => "form-submit" %>
+	<br><br>
+
+</fieldset>
+
 <% end %>
+
+</div>
+</div>

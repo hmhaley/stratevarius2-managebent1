@@ -4,7 +4,7 @@ class CreateAssociations < ActiveRecord::Migration
     create_table :associations do |t|
       t.string :assoc_type
       t.text :assoc_description
-      t.string :is_deal_current
+      t.string :is_assoc_current
 
       t.timestamps
     end
