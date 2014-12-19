@@ -53,7 +53,7 @@ skip_before_filter :authorize
 
 private
 
-  def set_user
+  def set_executive
     @executive = Executive.find(params[:id])
   end
 

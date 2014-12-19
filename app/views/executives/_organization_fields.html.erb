@@ -1,15 +1,15 @@
 <p class="nested-fields">
   <div class="controls">
 
-<%= f.text_field :org_name, :placeholder => "NAME ** => of Your Company/Organization" %>
+<%= f.text_field :org_name, :placeholder => "ORG NAME ** => of Your Company/Organization" %>
 
-  <%= f.text_field :sector_type, :placeholder => "**** SECTOR => is it a Private, Public or Nonprofit Org?" %>
+  <%= f.text_field :sector_type, :placeholder => "SECTOR => is it a Private, Public or Nonprofit Org?" %>
 
-  <%#= f.text_field :org_types_id, :placeholder => "**** ORG TYPE => Startup? Strategic Consulting? Mentoring?" %>
+  <%= f.text_field :org_types_id, :placeholder => "ORG TYPE => Startup? Consultant? Mentoring? Education? Project?" %>
 
-  <%#= f.text_field :size_employees_structured, :placeholder => "**** SIZE => Size of the Org (by number of employees)" %>
+  <%= f.text_field :size_employees_structured, :placeholder => "ORG SIZE => Size of the Org (by number of employees)" %>
 
-  <%= f.text_field :region_headquartered_in, :placeholder => "**** REGION => where the Org is Primarily Headquartered?" %>
+  <%= f.text_field :region_headquartered_in, :placeholder => "REGION => where the Org is Primarily Headquartered?" %>
 
   <%= f.text_field :hq_address_street, :placeholder => "STREET ** => the Org's main Business Address/Location" %>
 
@@ -19,7 +19,7 @@
 
   <%= f.text_field :hq_address_zip, :placeholder => "ZIP ** => five digits, or all nine, if you know them please" %>
 
-   <%= f.text_field :description, :placeholder => "DESCRIPTION ** => What the Org does, Why, & For Whom" %>
+   <%= f.text_area :description, :class => "form-text-area", :placeholder => "ORG DESCRIPTION ** => What the Org does, Why, & For Whom" %>
 
   <%= f.text_field :web_url, :placeholder => "WEB => the Org's Website URL (include 'http://')" %>
 

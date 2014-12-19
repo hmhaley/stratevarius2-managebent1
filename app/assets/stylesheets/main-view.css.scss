@@ -22,6 +22,7 @@ body {
   margin-right: 10%;
   margin-top: 30px;
   margin-bottom: 100px;
+  border-radius: 10px;
 }
 
 .home-tagline {
@@ -35,6 +36,7 @@ body {
     color: #C1262E;
     padding: 20px 10px 20px 10px;
     font-style: italic;
+    border-radius: 10px;
   }
 
 .home-body {
@@ -58,6 +60,7 @@ body {
     // table-layout: fixed;
     width: 100%;
     min-height: 300px;
+    border-radius: 10px;
 }
 
   .table-row-1 {
@@ -99,6 +102,7 @@ body {
   margin-right: 3%;
   padding: 30px;
   background-color: rgba(255, 255, 255, 0.87);
+  border-radius: 10px;
 
   p {
     font-family: 'Dosis', sans-serif;

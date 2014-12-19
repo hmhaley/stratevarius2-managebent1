@@ -21,6 +21,7 @@ include ActiveModel::SecurePassword
 
 	validates_presence_of :prefix
 	validates_presence_of :firstname
+	validates_length_of :firstname, minimum: 1, maximum: 30
 	validates_presence_of :lastname
 	validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 	validates_length_of :email, maximum: 255

@@ -79,5 +79,4 @@ extend ::Geocoder::Model::ActiveRecord
 #     accepted_deals.map{|fr| fr.partner_id }
 # end
 
-
-# end
+end

@@ -3,7 +3,7 @@
 
   <%#= f.text_field :is_relationship_current, :placeholder => "Is this your current employer?" %>
 
-  <%= f.text_field :job_title, :placeholder => "Job Title **" %>
+  <%= f.text_field :job_title, :placeholder => "JOB TITLE** => of your Officia Role within the Org" %>
 
   <%= f.fields_for :organization do |relationship_organization| %>
     <%= render 'organization_fields', f: relationship_organization %>

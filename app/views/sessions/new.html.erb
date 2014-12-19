@@ -1,0 +1,30 @@
+<div class="wrap-login">
+
+<div class="sign-form-body">
+
+  <br><br>
+
+  <h1 class="form-title">SIGN IN - for Registered Users</h1>
+<p align="left"><b>&nbsp;** = Required fields that must be completed to submit.</b></p>
+<p>&nbsp;&nbsp;</p>
+<br>
+
+<fieldset id="sessions-meta">
+
+<%= form_tag sessions_path do %>
+
+  <%= text_field_tag :username, params[:username], :placeholder => "USERNAME - Enter Username Here, & Password Below **" %>    
+  
+  <%= password_field_tag :password, :placeholder => "Password **" %>
+
+<p>&nbsp; </p>
+
+  <%= submit_tag "SIGN IN", :class => "form-submit" %>
+  <br><br>
+
+</fieldset>
+
+<% end %>
+
+</div>
+</div>

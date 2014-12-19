@@ -7,11 +7,16 @@ skip_before_filter :authorize
 
   def create
         executive = Executive.where(username: params[:username]).first
-        if executive && executive.authenticate(params[:password]) 
+        # first make sure we actually find a user
+        # then see if user authenticates
+        if executive && executive.authenticate(params[:password])
+
+        # sets the cookie to the browser
             session[:executive_id] = executive.id
             redirect_to root_path, notice: "Logged in!"
         else
             flash.now.alert = "Username or password is invalid"
+            # redirect_to new_session_path
             render "new"
         end
     end
