@@ -1,7 +1,6 @@
 class Organization < ActiveRecord::Base
 extend ::Geocoder::Model::ActiveRecord
 
-	# validates_uniqueness_of :username
 	# validates_presence_of :sector_type
 	# validates_presence_of :web_url
 	# validates_presence_of :hq_address_city
@@ -52,33 +51,33 @@ extend ::Geocoder::Model::ActiveRecord
 
 # tracks_unlinked_activities [:invited_partners]
 	
-def can_request_deal_with(organization)
-    !self.eql?(organization) && !self.deal_exists_with?(organization)
-  end
+# def can_request_deal_with(organization)
+#     !self.eql?(organization) && !self.deal_exists_with?(organization)
+#   end
 
-def deal_exists_with?(partner)
-    Deal.where("organization_id = ? AND partner_id = ?", self.id, partner.id).first
-end
+# def deal_exists_with?(partner)
+#     Deal.where("organization_id = ? AND partner_id = ?", self.id, partner.id).first
+# end
 
-def has_reached_daily_partner_request_limit?
-    deals_initiated_by_me.where('created_at > ?', Time.now.beginning_of_day).count >= Deal.daily_request_limit
-end
+# def has_reached_daily_partner_request_limit?
+#     deals_initiated_by_me.where('created_at > ?', Time.now.beginning_of_day).count >= Deal.daily_request_limit
+# end
 
-def network_activity(page = {}, since = 1.week.ago)
-    page.reverse_merge! :per_page => 10, :page => 1
-    partner_ids = self.partners_ids
-    # metro_area_people_ids = self.metro_area ? self.metro_area.users.map(&:id) : []
+# def network_activity(page = {}, since = 1.week.ago)
+#     page.reverse_merge! :per_page => 10, :page => 1
+#     partner_ids = self.partners_ids
+#     # metro_area_people_ids = self.metro_area ? self.metro_area.users.map(&:id) : []
 
-    ids = ((partners_ids) - [self.id])[0..100] #don't pull TOO much activity for now
-	# Could be ids = (partners_ids) | metro_area_orgs_ids)
+#     ids = ((partners_ids) - [self.id])[0..100] #don't pull TOO much activity for now
+# 	# Could be ids = (partners_ids) | metro_area_orgs_ids)
 
-    Activity.recent.since(since).by_organizations(ids).page(page[:page]).per(page[:per_page])
-end
+#     Activity.recent.since(since).by_organizations(ids).page(page[:page]).per(page[:per_page])
+# end
 
-def partners_ids
-    return [] if accepted_deals.empty?
-    accepted_deals.map{|fr| fr.partner_id }
-end
+# def partners_ids
+#     return [] if accepted_deals.empty?
+#     accepted_deals.map{|fr| fr.partner_id }
+# end
 
 
-end
+# end
