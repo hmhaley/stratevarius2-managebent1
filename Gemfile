@@ -52,10 +52,6 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
 end
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-ruby "2.1.2"
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
