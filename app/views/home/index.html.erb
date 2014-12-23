@@ -2,7 +2,8 @@
 <!-- <%#= link_to 'View all Executives', executives_path %> | <%#= link_to 'View all Organizations', organizations_path %> -->
 
 <div class="wrap-list">
-<div class="home-tagline">Pushing Your Data 'til it's Bent, but Not Broken</div>
+<div class="home-tagline"><% if current_user %>
+     <%= current_user.username %><% end %> Let's Push Your Data 'til it's Bent, but Not Broken </div>
 	<div class="home-body">
 		<table>
 			<tr class="table-row-1">
