@@ -1,5 +1,7 @@
 WebFontConfig = {
-	google: { families: ['Dosis:400,700,800:latin', 'Exo+2:700,500italic,400:latin' ] }
+	google: {
+		families: ['Dosis:400,700,800:latin', 'Exo+2:700,500italic,400:latin' ] 
+	}
 };
 
 (function() {
