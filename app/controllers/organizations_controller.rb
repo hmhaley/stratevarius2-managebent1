@@ -1,6 +1,6 @@
 class OrganizationsController < ApplicationController
 
-skip_before_filter :authorize
+before_filter :authorize
 
   def index
     @organizations = Organization.all
