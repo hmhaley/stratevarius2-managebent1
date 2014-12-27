@@ -14,7 +14,7 @@ private
   	helper_method :current_user
 
 	def authorize
-		redirect_to login_path, alert: "You are Not Authorized to view this page.  Please Sign-Up or Login." if current_user.nil?
+		redirect_to signin_path, alert: "You are Not Authorized to view this page.  Please Sign-Up or Login." if current_user.nil?
 	end
 
 	# def add_partner_link(organization = nil)
