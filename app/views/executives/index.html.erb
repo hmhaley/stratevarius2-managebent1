@@ -1,10 +1,10 @@
-<h1>Startup Executives and Executive Advisors</h1>
+<div class="wrap-list">
+	<div class="view-list">
 
+	<h1> Strategic Advisor Executives </h1>
+	<hr>
 <table>
 	<thead>
-		<tr>
-			<th colspan="5"><h1 style="margin:20px">Startup Executives</h1></th>
-		</tr>
 		<tr>
 			<th><h2><u>First Name</u></h2></th>
 			<th><h2><u>Last Name</u></h2></th>
@@ -20,9 +20,9 @@
 				</td>
 				<td><strong><%= executive.lastname %></strong>
 				</td>
-				<td><%= executive.jobtitle %></strong>
+				<td><%= executive.relationships.first.job_title %></strong>
 				</td>
-				<td><%= executive.org %></strong>
+				<td><%= executive.relationships.first.organization.org_name %></strong>
 				</td>
 				<td>
 				<ul>
@@ -35,3 +35,8 @@
 		<% end %>
 	</tbody>
 </table>
+		<br>
+		<hr>
+
+</div>
+</div>

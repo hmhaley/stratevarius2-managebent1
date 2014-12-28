@@ -127,9 +127,13 @@ body {
       font-size: 26px;
       font-family: 'Dosis', sans-serif;
       letter-spacing: 1px;
-      text-align: left;
+      text-align: left!important;
       padding: 10px 10px 5px 15px;
     }
+
+  th {
+      text-align: left!important;
+  }
 }
 
 hr { 

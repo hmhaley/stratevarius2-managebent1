@@ -30,7 +30,7 @@ skip_before_filter :authorize
   end
 
   def edit
-    @executive = Enabler.find(params[:id])
+    @executive = Executive.find(params[:id])
   end
 
   def update
