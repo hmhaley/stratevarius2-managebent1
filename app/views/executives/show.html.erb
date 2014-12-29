@@ -1,0 +1,71 @@
+<div class="wrap-list">
+	<div class="view-list">
+
+	<h1> Individual Executive: <%= @executive.prefix %> <%= @executive.firstname %> </h1>
+	<hr>
+
+<table>
+	<tbody>
+	<tr>
+		<td><p>Prefix or Honorific/Rank:</p>
+		</td>
+		<td><p><%= @executive.prefix %></p>
+		</td>
+	</tr>
+	<tr>
+		<td><p>First Name:</p></td>
+		<td><p><%= @executive.firstname %></p></td>
+	</tr>
+	<tr>
+		<td><p>Last Name:</p></td>
+		<td><p><%= @executive.lastname %></p></td>
+	</tr>
+	<tr>
+		<td><p>Suffix:</p></td>
+		<td><p><%= @executive.suffix %></p></td>
+	</tr>
+	<tr>
+		<td><p>Job Title:</p></td>
+		<td><p><%= @executive.relationships.first.job_title %></p></td>
+	</tr>
+	<tr>
+		<td><p>Organization:</p></td>
+		<td><p><%= @executive.relationships.first.organization.org_name %></p></td>
+	</tr>
+	<tr>
+		<td><p>Email Address, Main:</p></td>
+		<td><p><%= @executive.email %></p>	</td>
+	</tr>
+	<tr>
+		<td><p>Alternate Email:</p></td>
+		<td><p><%= @executive.alt_email %></p></td>
+	</tr>
+	<tr>
+		<td><p>Type of executive:</p></td>
+		<td><p><%= @executive.strat_exec_constituent_type %></p></td>
+	</tr>
+	<tr>
+		<td><p>Mobile Tel:</p></td>
+		<td><p><%= @executive.mobile_tel %></p></td>
+	</tr>
+	<tr>
+		<td><p>Office Tel:</p></td>
+		<td><p><%= @executive.office_tel %></p></td>
+	</tr>
+	<tr>
+		<td><p>Home Tel:</p></td>
+		<td><p><%= @executive.home_tel %></p></td>
+	</tr>
+	<tr>
+		<td><p>Fax:</p></td>
+		<td><p><%= @executive.fax %></p></td>
+	</tr>
+	<tr>
+		<td><p>Individual's Website Url:</p></td>
+		<td><p><%= @executive.exec_web_url %></p></td>
+	</tr>			
+	</tbody>
+</table>
+
+</div>
+</div>
