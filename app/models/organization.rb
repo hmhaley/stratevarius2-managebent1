@@ -47,6 +47,12 @@ extend ::Geocoder::Model::ActiveRecord
     has_many :deals_not_initiated_by_me, -> { where('initiator = ?', false) }, :class_name => "Deal", :foreign_key => "organization_id"
     has_many :occurances_as_partner, :class_name => "Deal", :foreign_key => "partner_id"
 
+	def self.get_org_associations(org_name)
+ 		Organization.find_by_sql(["select rorg_name, rorg_types_id, 'associations_initiated_by' as \"initiator_or_receiver\" from (SELECT r.org_name as rorg_name, r.org_types_id as rorg_types_id, i.org_name as iorg_name, i.org_types_id as iorg_types_id FROM organizations AS r INNER JOIN associations AS a ON r.id = a.receiver_id INNER JOIN organizations AS i ON a.initiator_id = i.id WHERE i.org_name = ? or r.org_name = ?) AS associations where rorg_name != ?
+ 	    union
+ 			select iorg_name, iorg_types_id, 'associations_received_by' from (SELECT r.org_name as rorg_name, r.org_types_id as rorg_types_id, i.org_name as iorg_name, i.org_types_id as iorg_types_id FROM organizations AS r INNER JOIN associations AS a ON r.id = a.receiver_id INNER JOIN organizations AS i ON a.initiator_id = i.id WHERE i.org_name = ? or r.org_name = ?) AS associations2 where iorg_name != ?;", org_name, org_name, org_name, org_name, org_name, org_name])
+ 	end
+
 # Other definitions
 
 # tracks_unlinked_activities [:invited_partners]

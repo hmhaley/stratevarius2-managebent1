@@ -1,0 +1,41 @@
+<script>
+	// After the page fully loads ...
+	$(function(){
+		// ... make it so when the drop-down changes, we do something
+		$("#organization_choice").change(function(){
+			console.log(this.value);
+			location.href="/reports/org_associations?organization=" + this.value;
+		})
+	});
+</script>
+
+<div class="wrap-list">
+	<div class="view-list">
+
+		<h1> Find an Organization's Associations with Other Orgs </h1>
+			<h2><i>&nbsp;&nbsp;&nbsp;Target Org: </i><%= select_tag "organization_choice", options_for_select(@organizations) %></h2>
+		<br><br>
+		<hr>
+		<table>
+			<thead>
+				<tr>
+					<th><h2>Associated Organization</h2><br></th>
+					<th><h2>Executive Affliated w/ this Org</h2><br></th>
+					<th><h2>Type of Association</h2></th>
+					<th><h2>Association Initiated by</h2><br></th>
+				</tr>
+			</thead>
+			<tbody>
+			<% @associations.each do |association| %>
+				<tr>
+					<td><%= association.rorg_name %></td>
+					<td><%= association.rorg_name %></td>
+					<td><%= association.rorg_name %></td>
+					<td><%= association.initiator_or_receiver %></td>
+				</tr>
+			<% end %>
+			</tbody>
+		</table>
+
+	</div>
+</div>

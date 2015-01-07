@@ -24,7 +24,9 @@ Stratevarius3::Application.routes.draw do
 # sets up the entire suite of standard restful routes for the associations controller to then process when the user goes to /sessions/some_defined_action_here
   resources :associations
 
-# manually writte-out collection of full standard restful routes for the executives_controller to then process when the user goes to /executives/some_defined_action_here
+  get 'reports/org_associations'
+
+# manually write-out collection of full standard restful routes for the executives_controller to then process when the user goes to /executives/some_defined_action_here
   get 'executives/' => 'executives#index', as: :executives
   get 'executives/new' => 'executives#new', as: :new_executive
   get 'executives/:id' => 'executives#show', as: :executive
