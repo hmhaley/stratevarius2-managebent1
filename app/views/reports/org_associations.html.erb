@@ -13,14 +13,17 @@
 	<div class="view-list">
 
 		<h1> Find an Organization's Associations with Other Orgs </h1>
-			<h2><i>&nbsp;&nbsp;&nbsp;Target Org: </i><%= select_tag "organization_choice", options_for_select(@organizations) %></h2>
+			<h2><i>Subject Org You Want to Search: </i>
+				<br>
+				&nbsp;<%= select_tag "organization_choice", options_for_select(@organizations), :class => "form-text-area" %></h2>
 		<br><br>
 		<hr>
 		<table>
 			<thead>
 				<tr>
-					<th><h2>Associated Organization</h2><br></th>
+					<th><h2>Associated Object Organization</h2><br></th>
 					<th><h2>Executive Affliated w/ this Org</h2><br></th>
+					<th><h2>Type of Organization</h2></th>
 					<th><h2>Type of Association</h2></th>
 					<th><h2>Association Initiated by</h2><br></th>
 				</tr>
@@ -30,7 +33,8 @@
 				<tr>
 					<td><%= association.rorg_name %></td>
 					<td><%= association.rorg_name %></td>
-					<td><%= association.rorg_name %></td>
+					<td><%= association.rorg_types_id %></td>
+					<td><%= association.rassoc_type %></td>
 					<td><%= association.initiator_or_receiver %></td>
 				</tr>
 			<% end %>

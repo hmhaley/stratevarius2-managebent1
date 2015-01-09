@@ -51,6 +51,7 @@
   text-align: left;
   font-size: 34px;
   font-weight: bold;
+  border-radius: 10px;
   margin: 0 0 20px 10px;    
   }
 
@@ -88,12 +89,14 @@
 
     .form-collection-select {
         color: white!important;
-        text-indent: 10px
+        text-indent: 10px;
+        border-radius: 10px;
       }
 
     .form-prefix {
       width: 23%;
       margin-right: 2%;
+      border-radius: 10px;
     }
 
     .form-radio-button-wrap {
@@ -110,6 +113,7 @@
       padding: 0px;
       text-align: center;
       color: white!important;
+      border-radius: 10px;
     }
 
     .form-radio-button-label {
@@ -138,7 +142,7 @@
       background-color: #1F2610;
       border: none;
       width: 100%;
-      border-radius: 3px;
+      border-radius: 10px;
       border-bottom: 4px solid #D6F2C2;
       color: white;
       font-family: 'Dosis', sans-serif;
@@ -153,6 +157,7 @@
     width: 100%;
     box-sizing: border-box;
     border: 5px solid #9A9A9A;
+    border-radius: 10px;
     display: table;
 
 
@@ -162,6 +167,7 @@
 
 input:focus {
   background:  rgba(193, 38, 46, 0.9)!important;
+  border-radius: 10px;
 }
 
 
