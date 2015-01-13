@@ -48,10 +48,70 @@ extend ::Geocoder::Model::ActiveRecord
     has_many :occurances_as_partner, :class_name => "Deal", :foreign_key => "partner_id"
 
 	def self.get_org_associations(org_name)
- 		Organization.find_by_sql(["select rorg_name, rorg_types_id, rassoc_type, 'Subject Org Above Initiated' as \"initiator_or_receiver\" FROM (SELECT r.org_name as rorg_name, r.org_types_id as rorg_types_id, i.org_name as iorg_name, i.org_types_id as iorg_types_id, a.assoc_type as rassoc_type FROM organizations AS r INNER JOIN associations AS a ON r.id = a.receiver_id INNER JOIN organizations AS i ON a.initiator_id = i.id WHERE i.org_name = ? or r.org_name = ?) AS associations where rorg_name != ?
- 	    union
- 			select iorg_name, iorg_types_id, iassoc_type, 'This Object Org Initiated' FROM (SELECT r.org_name as rorg_name, r.org_types_id as rorg_types_id, i.org_name as iorg_name, i.org_types_id as iorg_types_id, a.assoc_type as iassoc_type FROM organizations AS r INNER JOIN associations AS a ON r.id = a.receiver_id INNER JOIN organizations AS i ON a.initiator_id = i.id WHERE i.org_name = ? or r.org_name = ?) AS associations2 where iorg_name != ?;", org_name, org_name, org_name, org_name, org_name, org_name])
+ 		Organization.find_by_sql(["
+ 			SELECT 
+	 			rorg_name, 
+	 			rorg_types_id, 
+	 			rassoc_type, 
+	 			'Subject Org Above Initiated' as \"initiator_or_receiver\" 
+	 		FROM 
+	 			(SELECT 
+	 				r.org_name as rorg_name, 
+	 				r.org_types_id as rorg_types_id, 
+	 				i.org_name as iorg_name, 
+	 				i.org_types_id as iorg_types_id, 
+	 				a.assoc_type as rassoc_type 
+	 			FROM organizations AS r 
+	 			INNER JOIN associations AS a 
+	 			ON 
+	 			r.id = a.receiver_id 
+	 			INNER JOIN 
+	 			organizations AS i 
+	 			ON 
+	 			a.initiator_id = i.id 
+	 			WHERE 
+	 			i.org_name = ? 
+	 			OR 
+	 			r.org_name = ?) 
+ 			AS associations 
+ 			WHERE 
+ 			rorg_name != ? 
+ 	    UNION
+ 			SELECT
+ 				iorg_name, 
+ 				iorg_types_id, 
+ 				iassoc_type, 
+ 				'This Object Org Initiated' 
+			FROM 
+				(SELECT 
+					r.org_name as rorg_name, 
+					r.org_types_id as rorg_types_id, 
+					i.org_name as iorg_name, 
+					i.org_types_id as iorg_types_id, 
+					a.assoc_type as iassoc_type 
+				FROM organizations AS r
+				INNER JOIN associations AS a
+				ON 
+				r.id = a.receiver_id 
+				INNER JOIN 
+				organizations AS i 
+				ON 
+				a.initiator_id = i.id 
+				WHERE i.org_name = ? 
+				OR r.org_name = ?) 
+			AS associations2 
+			WHERE iorg_name != ?
+			;", 
+		org_name, 
+		org_name, 
+		org_name, 
+		org_name, 
+		org_name, 
+		org_name
+		])
  	end
+
+	 			# e.firstname as rexec_firstname 
 
 # Other definitions
 

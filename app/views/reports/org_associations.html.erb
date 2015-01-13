@@ -5,6 +5,7 @@
 		$("#organization_choice").change(function(){
 			console.log(this.value);
 			location.href="/reports/org_associations?organization=" + this.value;
+			subject_org=this.value;
 		})
 	});
 </script>
