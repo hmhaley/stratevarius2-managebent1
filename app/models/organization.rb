@@ -53,16 +53,31 @@ extend ::Geocoder::Model::ActiveRecord
 	 			rorg_name, 
 	 			rorg_types_id, 
 	 			rassoc_type, 
-	 			'Subject Org Above Initiated' as \"initiator_or_receiver\" 
+	 			rexec_firstname, 
+	 			rexec_lastName, 
+	 			'Above Initiated' as \"initiator_or_receiver\" 
 	 		FROM 
-	 			(SELECT 
+	 			(
+	 			SELECT 
 	 				r.org_name as rorg_name, 
 	 				r.org_types_id as rorg_types_id, 
 	 				i.org_name as iorg_name, 
 	 				i.org_types_id as iorg_types_id, 
-	 				a.assoc_type as rassoc_type 
-	 			FROM organizations AS r 
-	 			INNER JOIN associations AS a 
+	 				a.assoc_type as rassoc_type, 
+	 				e.firstname as rexec_firstname, 
+	 				e.lastname as rexec_lastname 
+	 			FROM 
+				executives as e
+				INNER JOIN
+				relationships as l
+				ON 
+				e.id = l.executive_id
+				RIGHT OUTER JOIN
+	 			organizations AS r 
+	 			ON 
+				l.organization_id = r.id 
+	 			INNER JOIN
+	 			associations AS a 
 	 			ON 
 	 			r.id = a.receiver_id 
 	 			INNER JOIN 
@@ -72,7 +87,8 @@ extend ::Geocoder::Model::ActiveRecord
 	 			WHERE 
 	 			i.org_name = ? 
 	 			OR 
-	 			r.org_name = ?) 
+	 			r.org_name = ?
+	 			) 
  			AS associations 
  			WHERE 
  			rorg_name != ? 
@@ -81,16 +97,31 @@ extend ::Geocoder::Model::ActiveRecord
  				iorg_name, 
  				iorg_types_id, 
  				iassoc_type, 
- 				'This Object Org Initiated' 
+ 				iexec_firstname, 
+ 				iexec_lastName, 
+ 				'At Left Initiated' 
 			FROM 
-				(SELECT 
+				(
+				SELECT 
 					r.org_name as rorg_name, 
 					r.org_types_id as rorg_types_id, 
 					i.org_name as iorg_name, 
 					i.org_types_id as iorg_types_id, 
-					a.assoc_type as iassoc_type 
-				FROM organizations AS r
-				INNER JOIN associations AS a
+					a.assoc_type as iassoc_type, 
+					e.firstname as iexec_firstname, 
+	 				e.lastname as iexec_lastname 
+				FROM 
+				executives as e
+				INNER JOIN
+				relationships as l
+				ON 
+				e.id = l.executive_id
+				RIGHT OUTER JOIN
+				organizations AS r
+				ON 
+				l.organization_id = r.id
+				INNER JOIN
+				associations AS a
 				ON 
 				r.id = a.receiver_id 
 				INNER JOIN 
@@ -98,7 +129,9 @@ extend ::Geocoder::Model::ActiveRecord
 				ON 
 				a.initiator_id = i.id 
 				WHERE i.org_name = ? 
-				OR r.org_name = ?) 
+				OR 
+				r.org_name = ?
+	 			) 
 			AS associations2 
 			WHERE iorg_name != ?
 			;", 
@@ -108,7 +141,7 @@ extend ::Geocoder::Model::ActiveRecord
 		org_name, 
 		org_name, 
 		org_name
-		])
+		]);	
  	end
 
 	 			# e.firstname as rexec_firstname 
