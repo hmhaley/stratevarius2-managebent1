@@ -5,7 +5,7 @@ WebFontConfig = {
 };
 
 (function() {
-	var wf = documnt.createElement('script');
+	var wf = document.createElement('script');
 	wf.scr = ('https:' == document.location.protocol ? 'https' : 'http') +
 		'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
 	wf.type = 'text/javascript';
