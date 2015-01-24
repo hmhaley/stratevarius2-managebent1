@@ -32,6 +32,7 @@
   // background: #D3000E;
   // background: #005619;
   background: #291A10;
+  minimum-width: 1275px;
 }
 
 nav {
@@ -60,12 +61,14 @@ nav {
   #nav-hold {
     width: 96%;
     margin-left:2%;
+    minimum-width: 1275px!important;
 
         a {
            -webkit-font-smoothing: antialiased;
           font-family: 'Exo 2', sans-serif!important;
           text-transform: uppercase;
           font-weight: bold;
+
 /////  COMPANY NAME COLOR TOP LEFT /////
           color: #C1262E;
           // color: white;
